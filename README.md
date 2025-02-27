@@ -26,8 +26,8 @@
 ## Screenshots & Preview  
 
 ### Homepage  
-![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Home_Page.png)  
-![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Home_Page1.png) 
+![Home Page](https://github.com/TanmayJain24/BlogBuzz/blob/main/public/images/Home_Page.png)  
+![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/main/public/images/Home_Page1.png) 
 
 ### Blog Page (Explore Section)  
 ![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Blog_Page.png)  
