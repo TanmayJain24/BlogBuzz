@@ -26,20 +26,20 @@
 ## Screenshots & Preview  
 
 ### Homepage  
-![Home Page](https://github.com/TanmayJain24/BlogBuzz/blob/main/public/images/Home_Page.png)  
-![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/main/public/images/Home_Page1.png) 
+![Home Page](https://github.com/TanmayJain24/BlogBuzz/main/public/images/Home_Page.png)  
+![Home Page1](https://github.com/TanmayJain24/BlogBuzz/main/public/images/Home_Page1.png) 
 
 ### Blog Page (Explore Section)  
-![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Blog_Page.png)  
+![Blog Page](https://github.com/TanmayJain24/BlogBuzz/main/public/images/Blog_Page.png)  
 
 ### Post Page (Create a New Blog)  
-![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Create_Page.png)   
+![Post Page](https://github.com/TanmayJain24/BlogBuzz/main/public/images/Create_Post.png)    
 
-### Search Results 
-![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Search_Results.png)   
+### Search Results Page 
+![Search Result Page](https://github.com/TanmayJain24/BlogBuzz/main/public/images/Search_Results.png)   
 
 ### Profile Page  
-![Profile Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/main/images/Profile_Page.png)  
+![Profile Page](https://github.com/TanmayJain24/BlogBuzz/main/public/images/Profile_Page.png)   
 
 
 ## **Tech Stack**  
