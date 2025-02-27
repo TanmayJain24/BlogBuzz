@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogBuzz</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">BlogBuzz</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Explore</a></li>
+            <li><a href="/posting">Post Now</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+    
+            <% if (user) { %>
+                <li><a href="/myprofile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li class="dropdown">
+                    <a href="#">Account</a>
+                    <div class="dropdown-content">
+                        <a href="/signup">Sign Up</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </nav>    
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to BlogBuzz</h1>
+        <p>Unleash your creativity and share your story with the world. Join our vibrant community today!</p>
+        <button onclick="location.href='/signup'">Get Started</button>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="section">
+        <h1>Create a Blog</h1>
+        <p>Stand out with a professionally-designed blog website that can be customized to fit your brand. Build, manage, and promote your blog with built-in design and marketing tools.</p>
+    </div>
+
+    <div class="section">
+        <h1>Express Yourself</h1>
+        <p>Unleash your creativity and express your unique perspective through engaging blog posts.</p>
+    </div>
+
+    <div class="section">
+        <h1>Become a Blogger</h1>
+        <p>Explore endless possibilities for expressing your thoughts and sharing them with the world.</p>
+    </div>
+
+    <div class="section">
+        <h1>Sign Up Now!</h1>
+        <button onclick="location.href='/signup'">Join Us</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 BlogBuzz. All rights reserved.</p>
+        <a href="/policy">Privacy Policy</a>
+        <a href="/aboutus">About Us</a>
+        <a href="/membership">Membership</a>
+    </footer>
+</body>
+
+</html>

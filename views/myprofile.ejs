@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>BlogBuzz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+<body>
+    <!--Navbar-->
+    <nav>
+        <div class="logo">BlogBuzz</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Explore</a></li>
+            <li><a href="/posting">Post Now</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            
+            <% if (user) { %>
+                <li><a href="/myprofile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li class="dropdown">
+                    <a href="#">Account</a>
+                    <div class="dropdown-content">
+                        <a href="/signup">Sign Up</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+    
+    <!-- search section -->
+    <div class="search-container">
+        <form action="/search" role="search" method="post">
+            <input type="search" name="searchQuery" id="searchInput" placeholder="Search...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Profile Details -->
+    <div class="profile-posts-container">
+        <!-- Profile Section (Left) -->
+        <div class="profile-card">
+            <h2>Profile Details</h2>
+            <div class="profile-info">
+                <p><strong>Full Name:</strong> <%= user.full_name %></p>
+                <p><strong>Username:</strong> <%= user.username %></p>
+                <p><strong>Email:</strong> <%= user.email %></p>
+            </div>
+        </div>
+    
+        <!-- Posts Section (Right) -->
+        <div class="posts-card">
+            <h2>Your Posts</h2>
+            <% if (posts && posts.length > 0) { %>
+                <div class="posts-grid">
+                    <% posts.forEach(post => { %>
+                        <div class="post-card">
+                            <h3>Title: <%= post.title %></h3>
+                            <p>Posted By <%= post.author %></p>
+                            <p>Description: <%= post.content %></p>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <p class="no-posts">No posts found</p>
+            <% } %>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 BlogBuzz. All rights reserved.</p>
+        <a href="/policy">Privacy Policy</a>
+        <a href="/aboutus">About Us</a>
+        <a href="/membership">Membership</a>
+    </footer>
+</body>
+<script>
+    function toggleMenu() {
+    document.querySelector("nav ul").classList.toggle("show");
+}
+</script>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogBuzz</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+
+</head>
+<body>
+    <nav>
+        <div class="logo">BlogBuzz</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Explore</a></li>
+            <li><a href="/posting">Post Now</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            
+            <% if (user) { %>
+                <li><a href="/myprofile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li class="dropdown">
+                    <a href="#">Account</a>
+                    <div class="dropdown-content">
+                        <a href="/signup">Sign Up</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <div class="search-container">
+        <form action="/search" role="search" method="post">
+            <input type="search" name="searchQuery" id="searchInput" placeholder="Search...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    
+    <div style="max-width: 900px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
+        <div style="padding: 40px; background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; margin-bottom: 30px;">
+            <main>
+                <h2 style="font-size: 1.8rem; color: #333; text-align: center; margin-bottom: 20px;">Create a New Post</h2>
+                
+                <form action="/posting" method="post" style="display: flex; gap: 20px;">
+                    <!-- Left Section -->
+                    <div style="flex: 2;">
+                        <input type="text" name="postTitle" id="postTitle" placeholder="Enter Post Title" 
+                               style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; 
+                                      border-radius: 5px; font-size: 1rem;" required>
+    
+                        <textarea name="postContent" id="postContent" placeholder="Enter your content..." 
+                                  style="width: 100%; padding: 10px; height: 200px; resize: vertical; border: 1px solid #ccc; 
+                                         border-radius: 5px; font-size: 1rem;" required></textarea>
+                    </div>
+    
+                    <!-- Right Section -->
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-start;">
+                        <label for="authorName" style="font-size: 1rem; margin-bottom: 5px; color: #333;">Author:</label>
+                        <input type="text" name="authorName" id="authorName" value="<%= authorName %>" readonly 
+                               style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc; 
+                                      border-radius: 5px; font-size: 1rem;" required>
+    
+                        <button type="submit" style="width: 100%; padding: 12px; background-color: #007BFF; color: white; 
+                                                     font-size: 1.2rem; border: none; border-radius: 5px; cursor: pointer; 
+                                                     transition: background-color 0.3s ease;">Post</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 BlogBuzz. All rights reserved.</p>
+        <a href="/policy">Privacy Policy</a>
+        <a href="/aboutus">About Us</a>
+        <a href="/membership">Membership</a>
+    </footer>   
+</body>
+</html>
+

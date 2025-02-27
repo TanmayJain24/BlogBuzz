@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">BlogBuzz</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Explore</a></li>
+            <li><a href="/posting">Post Now</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            
+            <% if (user) { %>
+                <li><a href="/myprofile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li class="dropdown">
+                    <a href="#">Account</a>
+                    <div class="dropdown-content">
+                        <a href="/signup">Sign Up</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+    
+    <!-- search section -->
+    <div class="search-container">
+        <form action="/search" role="search" method="post">
+            <input type="search" name="searchQuery" id="searchInput" placeholder="Search...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+    </div>
+    
+    <div class="container" style="width: 100%; max-width: 100%; padding: 20px; margin-top: 0px;">
+        <% posts.forEach(post => { %>
+            <div class="post-card" style="width: 100%; margin: 20px auto; margin-top: 0px; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: visible; min-height: auto;">
+                <!-- Blog Post Content -->
+                <div class="post-main">
+                    <div class="post-header" style="border-bottom: 2px solid #ddd; padding-bottom: 10px; margin-bottom: 10px;">
+                        <h1 style="color: #333; margin-bottom: 5px;"><%- post.title %></h1>
+                        <p style="color: #555; font-size: 0.9rem;">By <%- post.author %></p>
+                    </div>
+    
+                    <div class="post-content" style="margin: 10px 0; font-size: 1rem; color: #444; line-height: 0; white-space: pre-wrap;">
+                        <p><%- post.content %></p>
+                    </div>
+    
+                    <div class="post-footer">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <button class="like-button" data-title="<%- post.title %>" data-email="<%= user.email %>"
+                                style="display: flex; align-items: center; gap: 6px; 
+                                       border: none; border-radius: 25px; padding: 8px 16px; font-size: 1rem; cursor: pointer;
+                                       transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                                <i class="fas fa-thumbs-up"></i> Like
+                            </button>
+                            <span class="like-count" style="font-size: 1rem; color: #333; font-weight: bold; min-width: 30px; 
+                            text-align: center; background: #f1f1f1; padding: 6px 12px; 
+                            border-radius: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                                <%= post.likes %>
+                            </span>
+                        </div>                        
+                    </div>
+    
+                <!-- Comments Section -->
+                <div class="post-comments" style="margin-top: 10px; padding-bottom: 10px;">
+                    <h3 style="color: #007BFF; font-size: 1.2rem; border-bottom: 2px solid #ddd; padding-bottom: 5px;">Comments</h3>
+                    <% if (post.comments && post.comments.length > 0) { %>
+                        <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                            <% post.comments.forEach(comment => { %>
+                                <li style="padding: 10px; background: #f9f9f9; border-radius: 8px; margin-bottom: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); word-wrap: break-word; overflow: hidden;">
+                                    <strong style="color: #007BFF;"><%= comment.author %></strong>
+                                    <p style="margin-top: 5px; color: #444; white-space: pre-wrap;"><%= comment.content %></p>
+                                </li>
+                            <% }); %>
+                        </ul>
+                    <% } else { %>
+                        <p style="color: #777; font-style: italic;">No comments yet. Be the first to comment!</p>
+                    <% } %>
+                </div>
+
+                <!-- Comment Form -->
+                <form class="comment-form" style="display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 15px; 
+                                                  background: white; padding: 12px; border-radius: 10px; 
+                                                  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); border: 1px solid #ddd;">
+                    <input type="hidden" name="postTitle" value="<%- post.title %>">
+
+                    <textarea name="commentContent" placeholder="Write your comment..." rows="2"
+                              style="flex: 1; min-height: 45px; padding: 10px; font-size: 1rem; 
+                                     border: 1px solid #ccc; border-radius: 8px; resize: none; 
+                                     outline: none; background: #f9f9f9; white-space: pre-wrap;"></textarea>
+
+                    <button type="submit" class="comment-button"
+                            style="background: #007BFF; color: white; border: none; padding: 5px 10px; 
+                                   border-radius: 8px; font-size: 1rem; cursor: pointer; width: 100px; 
+                                   transition: background 0.3s ease; display: flex; align-items: center;">
+                        <i class="fas fa-paper-plane" style="margin-right: 6px;"></i>Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+        <% }) %>
+    </div>    
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Like Button AJAX
+            document.querySelectorAll(".like-button").forEach(button => {
+            button.addEventListener("click", function () {
+                const postTitle = this.getAttribute("data-title");
+                const userEmail = this.getAttribute("data-email"); // User email for tracking
+                const likeCountSpan = this.nextElementSibling;
+
+                fetch("/like", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ postTitle, userEmail })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        likeCountSpan.textContent = data.likes; // Update like count dynamically
+
+                        // Toggle Like Button Appearance
+                        if (this.classList.contains("liked")) {
+                            this.classList.remove("liked");
+                            this.style.color = "#0077B6";
+                            this.style.backgroundColor = "transparent";
+                        } else {
+                            this.classList.add("liked");
+                            this.style.color = "white";
+                            this.style.backgroundColor = "#0077B6";
+                        }
+                    } else {
+                        alert(data.message); // Show error message
+                    }
+                })
+                .catch(error => console.error("Error:", error));
+            });
+        });
+
+            
+        // Comment Form AJAX
+            document.querySelectorAll(".comment-form").forEach(form => {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+
+                    const postTitle = this.querySelector("input[name='postTitle']").value;
+                    const commentContent = this.querySelector("textarea[name='commentContent']").value;
+
+                    fetch("/comment", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ postTitle, commentContent })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Add the new comment dynamically
+                            const commentSection = this.closest(".post-card").querySelector(".post-comments ul");
+                            const newComment = document.createElement("li");
+                            newComment.innerHTML = `<strong>${data.author}</strong>: ${data.comment}`;
+                            commentSection.appendChild(newComment);
+
+                            this.querySelector("textarea[name='commentContent']").value = ""; // Clear input
+                        } else {
+                            alert(data.message);
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+                });
+            });
+        });
+    </script>
+</body>
+<footer>
+    <p>&copy; 2025 BlogBuzz. All rights reserved.</p>
+    <a href="/policy">Privacy Policy</a>
+    <a href="/aboutus">About Us</a>
+    <a href="/membership">Membership</a>
+</footer>
+</html>

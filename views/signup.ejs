@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>BlogBuzz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+</head>
+<style>
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+</style>
+<body>
+    <nav>
+        <div class="logo">BlogBuzz</div>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Explore</a></li>
+          <li><a href="/posting">Post Now</a></li>
+          <li><a href="/aboutus">About Us</a></li>
+          
+          <% if (user) { %>
+              <li><a href="/myprofile">Profile</a></li>
+              <li><a href="/logout">Logout</a></li>
+          <% } else { %>
+              <li class="dropdown">
+                  <a href="#">My Account</a>
+                  <div class="dropdown-content">
+                      <a href="/signup">Sign Up</a>
+                      <a href="/login">Login</a>
+                  </div>
+              </li>
+          <% } %>
+      </ul>
+    </nav>
+    
+    <!--Signup Box-->
+    <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0px auto;">
+      <div class="card" style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 100%; text-align: center;">
+          <div class="card_title">
+              <h1 style="margin: 0px; color: #0077B6;">Sign Up</h1>
+              <p>Already have an account? <a href="login" style="color: #0077B6;">Log in</a></p>
+          </div>
+          <div class="form" style="padding: 0px; margin: 0px;">
+              <form action="/signup" method="post" style="display: flex; flex-direction: column;">
+                <div class="input-group" style="width: 70%;">
+                  <input type="text" name="fullname" id="fullname" placeholder="Full Name" required 
+                      style="width: 100%; padding: 14px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"/>
+                </div>
+                <div class="input-group" style="width: 70%;">
+                      <input type="text" name="username" id="username" placeholder="Username" required 
+                          style="width: 100%; padding: 14px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"/>
+                  </div>
+                  <div class="input-group" style="width: 70%;">
+                      <input type="email" name="email" id="email" placeholder="Email" required 
+                          style="width: 100%; padding: 14px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"/>
+                  </div>
+                  <div class="input-group" style="width: 70%;">
+                      <input type="password" name="password" id="password" placeholder="Password" required 
+                          style="width: 100%; padding: 14px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"/>
+                  </div>   
+                  <button type="submit" class="btn" 
+                          style="width: 100%; padding: 14px; border: none; border-radius: 5px; cursor: pointer; background-color: #0077B6; color: white; font-size: 16px; box-sizing: border-box;">
+                      Sign Up
+                  </button>
+              </form>
+          </div>
+      </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogBuzz - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body style="background-color: #0077B6;">
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">BlogBuzz</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Explore</a></li>
+            <li><a href="/posting">Post Now</a></li>
+            <li><a href="/aboutus">About Us</a></li>
+            
+            <% if (user) { %>
+                <li><a href="/myprofile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            <% } else { %>
+                <li class="dropdown">
+                    <a href="#">Account</a>
+                    <div class="dropdown-content">
+                        <a href="/signup">Sign Up</a>
+                        <a href="/login">Login</a>
+                    </div>
+                </li>
+            <% } %>
+        </ul>
+    </nav>    
+
+    <!-- Login Box -->
+    <div class="container" style="display: flex; justify-content: center; align-items: center; height: 40vh;">
+        <div class="card" style="background-color: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 350px; text-align: center;">
+            <div class="card_title">
+                <h1 style="margin: 0; color: #0077B6;">Login</h1>
+                <p>Not a member yet? <a href="signup" style="color: #0077B6;">Sign up</a></p>
+            </div>
+            <div class="form">
+                <form action="/login" method="post" style="display: flex; flex-direction: column; gap: 15px;">
+                    <div class="input-group" style="width: 70%;">
+                        <input type="email" name="email" id="email" placeholder="Email" required 
+                            style="width: 100%; padding: 14px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"/>
+                    </div>
+                    <div class="input-group" style="width: 70%;">
+                        <input type="password" name="password" id="password" placeholder="Password" required 
+                            style="width: 100%; padding: 14px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-sizing: border-box;"/>
+                    </div>
+                    <div class="checkbox-container" style="display: flex; align-items: center; gap: 10px; justify-content: flex-start;">
+                        <input type="checkbox" id="showPasswordCheckbox" onclick="togglePasswordVisibility()">
+                        <label for="showPasswordCheckbox" style="font-size: 14px;">Show Password</label>
+                    </div>    
+                    <button type="submit" class="btn" 
+                            style="width: 100%; padding: 14px; border: none; border-radius: 5px; cursor: pointer; background-color: #0077B6; color: white; font-size: 16px; box-sizing: border-box;">
+                        Login
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("password");
+            passwordInput.type = passwordInput.type === "password" ? "text" : "password";
+        }
+    </script>
+</body>
+</html>
