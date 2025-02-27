@@ -23,6 +23,25 @@
 - Fully **responsive design**, optimized for both desktop and mobile. 
 - **Clean and Minimalist UI** for enhanced readability and navigation.  
 
+## Screenshots & Preview  
+
+### Homepage  
+![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Home_Page.png)  
+![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Home_Page1.png) 
+
+### Blog Page (Explore Section)  
+![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Blog_Page.png)  
+
+### Post Page (Create a New Blog)  
+![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Create_Page.png)   
+
+### Search Results 
+![Home Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/public/images/Search_Results.png)   
+
+### Profile Page  
+![Profile Page](https://raw.githubusercontent.com/TanmayJain24/BlogBuzz/main/images/Profile_Page.png)  
+
+
 ## **Tech Stack**  
 - **Backend**: Node.js, Express.js  
 - **Frontend**: HTML, CSS, JavaScript, EJS  
